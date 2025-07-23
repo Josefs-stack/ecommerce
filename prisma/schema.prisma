@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Produto {
+  id          String   @id @default(cuid())
+  nome        String
+  descricao   String
+  preco       Float
+  imagemUrl   String
+  categoria   String
+  criadoEm    DateTime @default(now())
+}
+
+model User {
+  id            String   @id @default(cuid())
+  nome          String?
+  email         String   @unique
+  emailVerified DateTime?
+  image         String?
+  senha         String?
+
+  contas        Conta[]
+  sessao        Sessao[]
+}
+
+model Conta {
+  id                 String  @id @default(cuid())
+  tipo               String
+  provedor           String
+  provedorContaId    String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Sessao {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id])
+}
