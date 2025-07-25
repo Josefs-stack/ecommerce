@@ -8,49 +8,77 @@ datasource db {
 }
 
 model Produto {
-  id          String   @id @default(cuid())
-  nome        String
-  descricao   String
-  preco       Float
-  imagemUrl   String
-  categoria   String
-  criadoEm    DateTime @default(now())
+  id         String    @id @default(cuid())
+  nome       String
+  preco      Float
+  descricao  String?
+  imagemUrl  String
+  criadoEm   DateTime  @default(now())
+  categoria  Categoria @default(ANEIS)
+  carrinho   Carrinho[]
+  vendas     Int       @default(0)
+}
+
+model Carrinho {
+  id         String   @id @default(cuid())
+  userId     String
+  produtoId  String
+  quantidade Int
+
+  user     User    @relation(fields: [userId], references: [id])
+  produto  Produto @relation(fields: [produtoId], references: [id])
 }
 
 model User {
-  id            String   @id @default(cuid())
-  nome          String?
-  email         String   @unique
+  id            String     @id @default(cuid())
+  name          String?
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
-  senha         String?
-
-  contas        Conta[]
-  sessao        Sessao[]
+  senha         String?     // Se for usar login por senha
+  accounts      Account[]
+  sessions      Session[]
+  carrinho      Carrinho[]
 }
 
-model Conta {
-  id                 String  @id @default(cuid())
-  tipo               String
-  provedor           String
-  provedorContaId    String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id])
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  @@unique([provider, providerAccountId])
 }
 
-model Sessao {
+model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
+  user         User     @relation(fields: [userId], references: [id])
+}
 
-  user User @relation(fields: [userId], references: [id])
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Categoria {
+  ANEIS
+  COLARES
+  BRINCOS
+  PULSEIRAS
+  ALIANCAS
 }

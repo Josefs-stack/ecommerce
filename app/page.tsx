@@ -1,36 +1,45 @@
+
+import React from "react"
 import { prisma } from "@/lib/prisma"
+import Carrosel from "@/components/Carrosel"
+import GridCategorias from "@/components/GridCategorias"
+import HorizontalProductList from "@/components/HorizontalProductList"
+import { TiSocialFacebook, TiSocialInstagram, TiSocialTwitter } from "react-icons/ti"
 
 export default async function Home() {
-  const produtos = await prisma.produto.findMany({
+
+  const ultimosProdutos = await prisma.produto.findMany({
     orderBy: { criadoEm: "desc" },
+    take: 10,
+  })
+
+  const maisVendidos = await prisma.produto.findMany({
+    orderBy: { vendas: "desc" }, // considere adicionar esse campo na tabela
+    take: 10,
   })
 
   return (
-    <main className="p-8">
-      <h1 className="text-4xl font-bold mb-6">Produtos</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {produtos.map((produto) => (
-          <div
-            key={produto.id}
-            className="border rounded-xl p-4 shadow-sm hover:shadow-md transition"
-          >
-            <img
-              src={produto.imagemUrl}
-              alt={produto.nome}
-              className="w-full h-48 object-cover rounded"
-            />
-            <h2 className="text-xl font-semibold mt-2">{produto.nome}</h2>
-            <p className="text-sm text-neutral-600">{produto.categoria}</p>
-            <p className="text-lg font-bold mt-1">
-              R$ {produto.preco.toFixed(2)}
-            </p>
-            <p className="text-sm mt-2">{produto.descricao}</p>
-            <button className="mt-4 w-full bg-neutral-900 text-white py-2 rounded hover:bg-neutral-700">
-              Adicionar ao carrinho
-            </button>
-          </div>
-        ))}
+    <div className="w-full min-h-screen flex flex-col justify-center items-center bg-neutral-100">
+      <Carrosel />
+      <HorizontalProductList
+        titulo="Lançamentos"
+        produtos={ultimosProdutos}
+      />
+      <GridCategorias />
+      <HorizontalProductList
+        titulo="Mais Vendidos"
+        produtos={maisVendidos}
+      />
+      <div className='w-full h-56 flex flex-col justify-center items-center'>
+        <h1 className="w-1/3 h-14 font-extrabold flex justify-center items-center">
+          SIGA @SEMIJOIAS
+        </h1>
+        <ul className="w-1/3 h-42 flex justify-around items-center space-x-4 mt-4">
+          <li className="cursor-pointer hover:scale-120 transition-all"><TiSocialInstagram size={32} /></li>
+          <li className="cursor-pointer hover:scale-120 transition-all"><TiSocialFacebook size={32} /></li>
+          <li className="cursor-pointer hover:scale-120 transition-all"><TiSocialTwitter size={32} /></li>
+        </ul>
       </div>
-    </main>
+    </div>
   )
 }
