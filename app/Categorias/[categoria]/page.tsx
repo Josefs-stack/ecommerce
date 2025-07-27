@@ -1,4 +1,3 @@
-// app/Categorias/[categoria]/page.tsx
 import { prisma } from "@/lib/prisma"
 import ProductList from "@/components/ProductList"
 
@@ -16,8 +15,8 @@ export default async function CategoriaPage({ params }: Props) {
   })
 
   return (
-    <main className="mt-24 flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl font-bold mb-4">
+    <main className="mt-30 flex flex-col items-center justify-center p-6">
+      <h1 className="text-3xl font-bold uppercase mb-4">
         {categoria}
       </h1>
       <ProductList produtos={produtos} />

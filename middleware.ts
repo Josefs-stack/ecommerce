@@ -6,7 +6,6 @@ export function middleware(request: NextRequest) {
 
   const url = request.nextUrl.clone()
 
-  // Se tentar acessar carrinho sem token, redirecione para login
   if (
     url.pathname.startsWith("/Carrinho") &&
     !token
@@ -15,11 +14,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Permite continuar normalmente
   return NextResponse.next()
 }
 
-// Quais rotas o middleware deve rodar:
 export const config = {
   matcher: ["/Carrinho/:path*"],
 }

@@ -48,7 +48,7 @@ export default function CarrinhoClient({ itens }: Props) {
   }
 
   return (
-    <main className="mt-24 p-8 max-w-4xl mx-auto">
+    <main className="mt-30 p-8 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Seu Carrinho</h1>
 
       {carrinho.length === 0 ? (
@@ -74,7 +74,7 @@ export default function CarrinhoClient({ itens }: Props) {
                     <button
                       onClick={() => atualizarCarrinho(item.id, item.quantidade - 1)}
                       disabled={item.quantidade <= 1 || isPending}
-                      className="p-1 border rounded disabled:opacity-30"
+                      className="p-1 border rounded cursor-pointer disabled:opacity-30"
                     >
                       <Minus size={16} />
                     </button>
@@ -82,7 +82,7 @@ export default function CarrinhoClient({ itens }: Props) {
                     <button
                       onClick={() => atualizarCarrinho(item.id, item.quantidade + 1)}
                       disabled={isPending}
-                      className="p-1 border rounded"
+                      className="p-1 border cursor-pointer rounded"
                     >
                       <Plus size={16} />
                     </button>
@@ -96,7 +96,7 @@ export default function CarrinhoClient({ itens }: Props) {
 
                 <button
                   onClick={() => removerItem(item.id)}
-                  className="text-red-500 hover:text-red-700 p-2"
+                  className="text-red-500 hover:text-red-700 cursor-pointer p-2"
                   disabled={isPending}
                 >
                   <Trash2 size={20} />

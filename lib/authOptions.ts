@@ -46,7 +46,7 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
-  // ⬇️ Aqui você troca "database" por "jwt"
+
   session: {
     strategy: "jwt" as SessionStrategy
   },

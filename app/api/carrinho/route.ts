@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/authOptions"
 
-// Adicionar item ao carrinho
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions)
 
@@ -43,7 +42,6 @@ export async function POST(request: Request) {
   return NextResponse.json({ success: true })
 }
 
-// Atualizar quantidade
 export async function PUT(request: Request) {
   const session = await getServerSession(authOptions)
   if (!session?.user?.email) return NextResponse.json({ error: "Não autenticado" }, { status: 401 })
@@ -59,7 +57,6 @@ export async function PUT(request: Request) {
   return NextResponse.json({ success: true })
 }
 
-// Remover item
 export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url)
   const id = searchParams.get("id")

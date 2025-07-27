@@ -1,9 +1,8 @@
-// components/Footer.tsx
 export default function Footer() {
   return (
     <footer className="text-black mt-16 border-t shadow">
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {/* A MARCA */}
+        
         <div>
           <h3 className="font-semibold mb-3">A MARCA</h3>
           <ul className="space-y-2 text-sm">
@@ -14,7 +13,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* INFORMAÇÕES ÚTEIS */}
         <div>
           <h3 className="font-semibold mb-3">INFORMAÇÕES ÚTEIS</h3>
           <ul className="space-y-2 text-sm">
@@ -28,7 +26,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* FALE CONOSCO */}
         <div>
           <h3 className="font-semibold mb-3">FALE CONOSCO</h3>
           <ul className="space-y-2 text-sm">

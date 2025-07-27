@@ -35,7 +35,7 @@ model User {
   email         String?    @unique
   emailVerified DateTime?
   image         String?
-  senha         String?     // Se for usar login por senha
+  senha         String?    
   accounts      Account[]
   sessions      Session[]
   carrinho      Carrinho[]
@@ -77,8 +77,5 @@ model VerificationToken {
 
 enum Categoria {
   ANEIS
-  COLARES
   BRINCOS
-  PULSEIRAS
-  ALIANCAS
 }

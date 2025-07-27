@@ -34,7 +34,7 @@ export default function RootLayout({
         <Providers>
           <TopBarCarrocel />
           <Header />
-          <main className="w-full min-h-screen bg-neutral-100">
+          <main className="w-full min-h-screen bg-neutral-50">
             {children}
           </main>
           <Footer />

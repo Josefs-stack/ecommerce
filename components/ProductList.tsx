@@ -22,15 +22,15 @@ export default function ProductList({ produtos }: Props) {
           >
             <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-            <div className="relative z-20 w-full h-full flex flex-col items-center justify-around text-neutral-950 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <h3 className="text-lg font-semibold">{produto.nome}</h3>
-              <p className="text-sm text-neutral-200">{produto.categoria}</p>
-              <p className="text-md font-bold mt-1">
+            <div className="relative z-20 w-full h-full flex flex-col items-center justify-around text-neutral-950 uppercase text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <h3 className="h-1/3 w-5/6 flex justify-center items-center text-center text-2xl font-semibold">{produto.nome}</h3>
+              <p className="text-lg text-neutral-200">{produto.descricao}</p>
+              <p className="text-2xl font-bold mt-1">
                 R$ {produto.preco.toFixed(2)}
               </p>
 
               <button
-                className="mt-4 w-full h-12 bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition"
+                className="mt-4 w-full h-12 bg-white text-black text-lg font-semibold hover:bg-neutral-200 cursor-pointer uppercase transition"
                 onClick={async () => {
                   await fetch("/api/carrinho", {
                     method: "POST",

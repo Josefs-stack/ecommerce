@@ -17,13 +17,11 @@ export default function RegistroPage() {
 
     setError("")
 
-    // Validação: senhas iguais?
     if (senha !== confirmaSenha) {
       setError("As senhas não coincidem.")
       return
     }
 
-    // 1. Registra usuário via API
     const res = await fetch("/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,12 +34,11 @@ export default function RegistroPage() {
       return
     }
 
-    // 2. Redireciona para a página de login
     router.push("/LoginPage")
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="mt-30 min-h-screen flex items-center justify-center">
       <form onSubmit={handleRegister} className="flex flex-col gap-4 w-80">
         <input
           type="text"

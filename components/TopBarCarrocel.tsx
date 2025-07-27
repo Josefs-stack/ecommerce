@@ -46,7 +46,7 @@ export default function TopBarCarousel() {
       </button>
       <a
         href={messages[current].href}
-        className="w-[300px] Rock text-[12px] text-center hover:underline transition-all"
+        className="w-[300px] Rock text-[14px] text-center hover:underline transition-all"
       >
         {messages[current].text}
       </a>
