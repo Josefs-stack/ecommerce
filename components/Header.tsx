@@ -14,11 +14,11 @@ export default function Header() {
       </div>
 
       <nav className="w-1/3 h-full flex justify-center items-center text-lg uppercase gap-6 font-bold text-neutral-700">
-        <Link href="/Categorias/aneis" className="hover:text-black transition-colors">
+        <Link href="/Categorias/aneis" className="hover:text-black transition-colors cursor-pointer">
           Anéis
         </Link>
 
-        <Link href="/Categorias/brincos" className="hover:text-black transition-colors">
+        <Link href="/Categorias/brincos" className="hover:text-black transition-colors cursor-pointer">
           Brincos
         </Link>
 

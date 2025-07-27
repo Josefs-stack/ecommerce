@@ -13,7 +13,7 @@ export default function ProductList({ produtos }: Props) {
         {produtos.map((produto) => (
           <div
             key={produto.id}
-            className="relative group h-100 min-w-[300px] rounded-xl shadow-lg overflow-hidden flex-shrink-0"
+            className="relative group h-100 w-[300px] rounded-xl shadow-lg overflow-hidden flex-shrink-0"
             style={{
               backgroundImage: `url(${produto.imagemUrl})`,
               backgroundSize: "cover",
