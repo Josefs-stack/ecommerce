@@ -8,7 +8,7 @@ type Props = {
 
 export default function ProductList({ produtos }: Props) {
   return (
-    <main className="p-8">
+    <main className="p-8 mt-5">
       <div className="flex justify-center items-center flex-wrap gap-6">
         {produtos.map((produto) => (
           <div

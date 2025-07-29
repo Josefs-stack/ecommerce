@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     url.pathname.startsWith("/Carrinho") &&
     !token
   ) {
-    url.pathname = "/login"
+    url.pathname = "/Login"
     return NextResponse.redirect(url)
   }
 
@@ -20,3 +20,4 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ["/Carrinho/:path*"],
 }
+

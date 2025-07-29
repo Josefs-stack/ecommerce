@@ -9,7 +9,7 @@ export default function CategoriasGrid() {
   return (
     <div className="h-[80vh] w-5/6 flex lg:flex-row flex-col justify-around items-center gap-2 p-2 overflow-hidden">
       <Link
-        href="/Categorias/aneis"
+        href="/Categorias/Aneis"
         className="relative lg:h-5/6 h-[45%] lg:w-[45%] group w-5/6 bg-amber-300 flex items-center justify-center text-xl rounded-2xl font-bold hover:scale-105 transition-all"
       >
         <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
@@ -24,7 +24,7 @@ export default function CategoriasGrid() {
       </Link>
 
       <Link
-        href="/Categorias/brincos"
+        href="/Categorias/Brincos"
         className="relative lg:h-5/6 h-[45%] lg:w-[45%] w-5/6 bg-amber-300 flex items-center group justify-center text-xl rounded-2xl font-bold hover:scale-105 transition-all"
       >
         <div className="absolute inset-0 bg-black/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
