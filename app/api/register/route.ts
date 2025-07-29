@@ -24,8 +24,8 @@ export async function POST(req: Request) {
         name: nome.trim(),
       },
     })
-
-    const { senha: _, ...userSemSenha } = novoUsuario
+    
+    const { senha: senhaUsuario, ...userSemSenha } = novoUsuario
     return NextResponse.json(userSemSenha, { status: 201 })
   } catch {
     return NextResponse.json({ error: "Erro ao registrar usuário" }, { status: 500 })

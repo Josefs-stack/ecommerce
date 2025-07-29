@@ -28,7 +28,7 @@ export const authOptions = {
         }
 
         const isPasswordValid = await compare(credentials.password, user.senha || "")
-
+        
         if (!isPasswordValid) {
           return null
         }

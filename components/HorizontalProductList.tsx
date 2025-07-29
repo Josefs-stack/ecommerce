@@ -9,17 +9,6 @@ type Props = {
 }
 
 export default function HorizontalProductList({ titulo, produtos }: Props) {
-  const [addedId, setAddedId] = useState<string | null>(null)
-
-  async function handleAddToCart(id: string) {
-    await fetch("/api/carrinho", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ produtoId: id }),
-    })
-    setAddedId(id)
-    setTimeout(() => setAddedId(null), 2000)
-  }
 
   const produtosLimitados = produtos.slice(0, 5)
 

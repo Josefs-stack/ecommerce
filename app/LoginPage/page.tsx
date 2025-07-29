@@ -27,8 +27,8 @@ export default function LoginPage() {
     }
   }
 
-  const handleGoogleLogin = async () => {
-    await signIn('google', { callbackUrl: '/' })
+     const handleGoogleLogin = () => {
+    signIn('google')
   }
 
   return (
@@ -89,7 +89,7 @@ export default function LoginPage() {
 
         <button
           type="button"
-          onClick={() => signIn('google')}
+         onClick={handleGoogleLogin}
           className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition"
         >
           Entrar com Google
